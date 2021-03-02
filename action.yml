@@ -1,0 +1,10 @@
+name: 'Site Health Check'
+description: 'Simple site health check that makes an HTTP request to provided URL'
+author: 'Petr Chalupa <chalupa.petr93@gmail.com>'
+inputs:
+    url:
+        description: 'Site URL'
+        required: true
+runs:
+    using: 'node12'
+    main: 'dist/index.js'
