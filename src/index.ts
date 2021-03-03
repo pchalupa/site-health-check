@@ -10,9 +10,9 @@ enum Protocol {
 try {
 	const url = new URL(getInput('url'));
 
-	const handleResponse = (response: IncomingMessage) => {
-		if (response.statusCode !== 200) {
-			throw new Error('Failed to get!');
+	const handleResponse = ({ statusCode }: IncomingMessage) => {
+		if (statusCode !== 200) {
+			throw new Error(`Site responses with HTTP code: ${statusCode}`!);
 		}
 	};
 
@@ -24,7 +24,7 @@ try {
 			getHttps(url, handleResponse);
 			break;
 		default:
-			throw new Error('not implemented');
+			throw new Error(`Protocol ${url.protocol} is not implemented yet!`);
 	}
 } catch (error) {
 	setFailed(error.message);
