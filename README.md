@@ -4,11 +4,11 @@ Simple site health check that makes an HTTP request to provided URL.
 
 ## Inputs
 
-### `url`
+| label | required |    Description |
+| ----- | :------: | -------------: |
+| url   |   yes    | URL of website |
 
-**Required** URL of website
-
-## Example usage
+## Example Usage
 
 ```
 uses: pchalupa/site-health-check@v1
