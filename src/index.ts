@@ -1,6 +1,7 @@
 import { getInput, setFailed } from '@actions/core';
 import { get as getHttps } from 'https';
-import { get as getHttp, IncomingMessage } from 'http';
+import { get as getHttp } from 'http';
+import type { IncomingMessage } from 'http';
 
 enum Protocol {
 	http = 'http:',
@@ -16,16 +17,20 @@ try {
 		}
 	};
 
+	get(url, handleResponse);
+} catch (error) {
+	setFailed(error.message);
+}
+
+function get(url: URL, callback: (response: IncomingMessage) => void) {
 	switch (url.protocol) {
 		case Protocol.http:
-			getHttp(url, handleResponse);
+			getHttp(url, callback);
 			break;
 		case Protocol.https:
-			getHttps(url, handleResponse);
+			getHttps(url, callback);
 			break;
 		default:
 			throw new Error(`Protocol ${url.protocol} is not implemented yet!`);
 	}
-} catch (error) {
-	setFailed(error.message);
 }
