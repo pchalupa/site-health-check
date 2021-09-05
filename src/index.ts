@@ -27,5 +27,9 @@ try {
 			throw new Error(`Protocol ${url.protocol} is not implemented yet!`);
 	}
 } catch (error) {
-	setFailed(error.message);
+	if (error instanceof Error) {
+		setFailed(error.message);
+	}
+
+	setFailed('There was a problem with processing your request.');
 }
