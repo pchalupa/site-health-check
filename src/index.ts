@@ -19,7 +19,11 @@ try {
 
 	get(url, handleResponse);
 } catch (error) {
-	setFailed(error.message);
+	if (error instanceof Error) {
+		setFailed(error.message);
+	}
+
+	setFailed('There was a problem with processing your request.');
 }
 
 function get(url: URL, callback: (response: IncomingMessage) => void) {
