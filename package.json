@@ -18,6 +18,6 @@
 		"typescript": "^4.4.2"
 	},
 	"dependencies": {
-		"@actions/core": "^1.2.6"
+		"@actions/core": "^1.9.1"
 	}
 }
